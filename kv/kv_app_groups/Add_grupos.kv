@@ -1,0 +1,116 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import colors kivymd.color_definitions.colors
+
+#:import effect kivy.uix.effectwidget.EffectWidget
+#:import HorizontalBlurEffect kivy.uix.effectwidget.HorizontalBlurEffect
+#:import VerticalBlurEffect kivy.uix.effectwidget.VerticalBlurEffect
+<Add_Grupo>:
+    name:"Add_grupo"
+    orientation: 'vertical'
+    id: Add_grupo
+    EffectWidget:
+        effects:
+            # blur_value   .
+            (\
+            HorizontalBlurEffect(size=app.blur_value), \
+            VerticalBlurEffect(size=app.blur_value), \
+            )
+        FitImage: 
+            id: title_image
+            size_hint_y: 1
+            y: root.height -self.height
+            source: "././Datos/Imagenes/ImgAdmin/light-bulb-3535435__480.jpg"
+    
+
+    MDRelativeLayout:
+        size_hint: 1, 1
+        md_bg_color: 1,1,1,.7
+        pos_hint: {"center_y":.5, "center_x":.5}
+    Screen:
+  
+        MDBoxLayout:
+            size_hint: 1, None
+            height:dp(60)
+            line_color: 0,0,1,.4
+            md_bg_color: [0,4/255,149/255,1]
+            pos_hint:{"center_y":.95}
+            MDIconButton:
+                icon:"arrow-left-drop-circle"
+                pos_hint:{"center_y":.5, "center_x":1}
+                theme_text_color: "Custom"
+                text_color: 1,1,1,1
+                on_press: app.Cambio_de_pantalla("Select")
+            MDBoxLayout:
+                MDLabel:
+                    text: app.title
+                    bold: True
+                    color: 1,1,1,1
+                    
+                    font_style: "H6"
+        FitImage:
+            id: ImagenObtenida
+            size_hint:.7, .44
+            radius: [20,20,20,20]
+            pos_hint: {"center_y":.71, "center_x":.5}
+            source: "./Datos/Imagenes/add_img.png"
+            
+            
+            
+        MDBoxLayout:
+            
+            orientation:"vertical"
+            size_hint:1,None
+            spacing: dp(70)
+            height: dp(50)
+            size_hint_x: .9
+            pos_hint: {"center_x":.5, "center_y": .3}
+            padding: [20,]
+            
+            MDBoxLayout:
+                size_hint_x: .9
+                MDTextField:
+                    hint_text: "Grupo"
+                    id: Nombre_Grupo
+
+                    helper_text: "Ingres El Nombre Del Grupos"
+                    helper_text_mode: "on_focus"
+                    icon_right: "view-sequential"
+
+                    icon_right_color:app.theme_cls.primary_color
+            MDBoxLayout:
+                size_hint_x: .9
+                orientation: "horizontal"  
+                
+                MDTextField:
+                    id: ImagenBuscada
+                    hint_text: "Imagen"
+                    helper_text: "Ingrese Una Imagen"
+                    helper_text_mode: "on_focus"
+                    border: 1,1,1,.1
+
+                   
+                MDIconButton:
+                    icon: "folder-image"
+                    user_font_size: dp(30)
+                    theme_text_color:"Custom"
+                    text_color: app.theme_cls.primary_color
+                    on_release: Add_grupo.BuscarImagenMemoria()
+                
+    MDFlatButton:
+        id: Screen_add_grupo
+        id_grupo: ""
+        on_release:Add_grupo.Guardar_datos(self.id_grupo)
+        pos_hint: {"center_x":.5, "center_y":.2}
+        text: "SAVE"
+        user_font_size: sp(50)
+        theme_text_color: "Custom"
+        line_color: 0,0,0,1
+
+
+                
+
+            
+
+
+
+    

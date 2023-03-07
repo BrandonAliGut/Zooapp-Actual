@@ -1,0 +1,23 @@
+
+[
+    {
+        "config":[
+            {
+                "theme_style":"Light",
+                "accent_hue":"500",
+                "primary_palette":"Blue",
+                "primary_hue":"500",
+                "primary_light_hue":"200",
+                "primary_dark_hue":"700"
+                
+            }
+            
+        ],
+        "color_all":[
+            {
+            }
+            
+        ]
+    }
+]
+

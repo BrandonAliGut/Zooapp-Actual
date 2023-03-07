@@ -1,0 +1,114 @@
+<Config_color_personal>:
+    name:"Config_color_s"
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    MDBoxLayout:
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        orientation:"vertical"
+        MDBoxLayout:
+            size_hint:1,.1
+            pos_hint: {"top":1}
+            MDBoxLayout:
+                pos_hint: {"center_x":.5, "center_y":.5}
+                IconLeftWidget:
+                    icon:"exit-to-app" 
+                    on_release: app.Regresar_a_inicio("Inicio1")
+                MDRelativeLayout:
+                    pos_hint: {"center_x":.4, "center_y":.5}
+                    MDBoxLayout:
+                        size_hint:None, None
+                        width: dp(200)
+                        hiegth:dp(20)
+                        pos_hint: {"center_x":.47, "center_y":.4}
+                        MDLabel:
+                            
+                            text: "Configuracion Personalizada"
+        MDBoxLayout:
+     
+            size_hint:1,1
+            pos_hint: {'center_x': .5, 'center_y': .5}
+
+            MDBoxLayout:
+                size_hint:1,1
+                
+                pos_hint: {'center_x': 0.5,'top': 1}
+                ScrollView:
+                    do_scroll_y: True
+                    bar_width: 1
+                    MDList:
+                        spacing: dp(30)
+                        padding:[20,0,20,20]
+                        OneLineIconListItem:
+                            size_hint_y: None
+                            height: toolbar.height + dp(10)
+                            on_press: root.open_color_picker("menu")
+                            
+                            MDTopAppBar:
+                                id: toolbar
+                                size_hint_y: None
+                                title: app.title
+                                specific_text_color: root.text_color
+                                pos_hint: {'center_x': .5, 'center_y': .5}
+                                height: dp(60)
+                                left_action_items: [['menu', lambda x:x],["cloud-search", lambda x:x]]
+                                right_action_items: [[ "store", lambda x:x],['login', lambda x:x]]
+                            
+                        OneLineIconListItem:
+                            on_release: root.open_color_picker("Swipe")
+                            size_hint_y: None
+                            height: dp(420)
+                            
+                            MDBoxLayout:
+                                
+                                size_hint:None,None
+                                hiegth: dp(400)
+                                pos_hint: {'center_x':.5, 'center_y':.5}
+                                width:dp(200)
+                                MDBoxLayout:
+                                    id: box_swipe
+                                    pos_hint: {'center_x':.5, 'center_y':.5}
+                                    md_bg_color: app.cls_box[1]
+                                    size_hint: 1,None
+                                    height: dp(400)
+                                    orientation: 'vertical'
+                                    radius: [30,]
+                                    MDBoxLayout:
+                                        size_hint: 1, .2
+                                        MDLabel:
+                                            halign: 'center'
+                                            text: "Cuadro"
+                                            height: dp(1)
+                                            theme_text_color: "Custom"
+                                            text_color:root.text_color
+                                            font_style: 'H6' if Window.size >= (350,300) else 'Subtitle1'
+                                    MDCard:
+                                        size_hint: 1, 1
+                                        radius: [30,]
+                                        on_release: root.open_color_picker("Swipe")
+                                        FitImage:
+                                            source:"./Datos/Imagenes/add_img.png"
+                                            
+
+                                    MDBoxLayout:
+                                        pos_hint: {'center_x':.5, 'center_y':.1}
+                                        size_hint:1, None
+                                        md_bg_color: app.cls_box[1]
+                                        height: dp(50)
+                                        radius: [0,0,30,30]
+                                        
+                                        orientation: 'horizontal'
+                                        MDLabel: 
+                                            text:"informacion"
+                                            halign: 'center'
+                                            theme_text_color: "Custom"
+                                            text_color:root.text_color
+                                        
+                        OneLineIconListItem:
+                            text: "Text color"
+                            theme_text_color: "Custom"
+                            text_color:root.text_color
+                            on_press: root.open_color_picker("text_color")
+                            IconLeftWidget:
+                                icon: "pencil"
+                            
+                                
+                            

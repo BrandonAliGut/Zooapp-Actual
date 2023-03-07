@@ -1,0 +1,20 @@
+[
+    {
+        "id_MenuButton": 1,
+        "foto": "/MenuButton/animal-21649__480.jpg",
+        "titulo": "Gallinas",
+        "opcion": "A",
+        "activo": true,
+        "PGRUPO": 2,
+        "Id_Categoria": null
+    },
+    {
+        "id_MenuButton": 2,
+        "foto": "/MenuButton/aplicacion_con_10_dias_de_complea%C3%B1o.PNG",
+        "titulo": "Generalidad",
+        "opcion": "B",
+        "activo": true,
+        "PGRUPO": 2,
+        "Id_Categoria": null
+    }
+]

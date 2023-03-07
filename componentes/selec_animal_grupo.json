@@ -1,0 +1,34 @@
+[
+    {
+        "idAnimalList": 1,
+        "foto": "/Lista_De_Animales/balloon-3206530__480.jpg",
+        "AnimalList": "Porcinos",
+        "activo": true,
+        "PGRUPO": 1,
+        "Id_Categoria": null
+    },
+    {
+        "idAnimalList": 2,
+        "foto": "/Lista_De_Animales/Fondo_estatico.PNG",
+        "AnimalList": "Aves",
+        "activo": true,
+        "PGRUPO": 2,
+        "Id_Categoria": null
+    },
+    {
+        "idAnimalList": 3,
+        "foto": "/Lista_De_Animales/balloon-3206530__480.jpg",
+        "AnimalList": "Porcinos",
+        "activo": true,
+        "PGRUPO": 2,
+        "Id_Categoria": null
+    },
+    {
+        "idAnimalList": 4,
+        "foto": "/Lista_De_Animales/Fondo_estatico.PNG",
+        "AnimalList": "Aves",
+        "activo": true,
+        "PGRUPO": 1,
+        "Id_Categoria": null
+    }
+]

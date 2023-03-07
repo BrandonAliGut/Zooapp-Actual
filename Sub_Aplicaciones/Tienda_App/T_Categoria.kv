@@ -1,0 +1,42 @@
+<Button_C>:
+    size_hint_y: None
+    height: dp(150)
+    orientation: "vertical"
+    
+    MDLabel: 
+        size_hint_y: None
+        text: "Categorias"
+        height: dp(30)
+        theme_text_color: "Custom"
+        user_font_size: "H2"
+    ScrollView:
+        do_scroll_y: False
+        bar_width: 2
+        scroll_timeout: .2
+        MDGridLayout:
+            rows: 1
+            id: scroll_view_C
+            adaptive_width: True
+            spacing: dp(20)
+            padding:[10,]
+
+
+
+
+<Categoria_Card_Button>:
+    #'left', 'center', 'right', 'justify', 'auto'
+    size_hint:None,None
+    orientation: 'vertical'
+    size: '100dp','100dp'
+    line_color: [1,0,0,1]
+    elevation: dp(10)
+    MDLabel:
+        text: root.Precio+ "$"
+        halign: "center"
+        font_size: dp(30)
+    MDLabel:
+        text: "one"
+        size_hint_y:None
+        halign: "right"
+        height: self.texture_size[1]
+        font_size: dp(11)

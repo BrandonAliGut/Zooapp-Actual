@@ -1,0 +1,405 @@
+
+#: include kv/grupos.kv
+
+
+#:import effect kivy.uix.effectwidget.EffectWidget
+#:import HorizontalBlurEffect kivy.uix.effectwidget.HorizontalBlurEffect
+#:import VerticalBlurEffect kivy.uix.effectwidget.VerticalBlurEffect
+
+<InicioPrimario>:
+    name: "Properpantalla"
+    pos_hint:{'center_x':.5, 'center_y':.5}
+    
+
+    MDNavigationLayout:
+        ScreenManager:
+            Screen:
+                id: pangina_1
+                MDBoxLayout:
+                    id: pangina_2
+                
+                MDBoxLayout:
+                    md_bg_color:app.theme_cls.bg_dark #[238/255,238/255,239/255,1]
+                    orientation: 'vertical'
+                    
+                    
+
+                    MDTopAppBar:
+                        id: toolbar
+                        size_hint_y: None
+                        title: app.title
+                        height: dp(60)
+                        md_bg_color: app.cls_box[0]
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state()],["cloud-search", lambda x: app.buscador()]]
+                        right_action_items: [[ "store", lambda x:x, "", "Tienda"],['login', lambda x: app.login(),"","Registrarce"]]
+                        elevatio: 20 
+                        specific_text_color:1,1,1,1
+                        
+                    
+                    ScreenManager:
+                        id: screen_manager
+                        Grupos:
+                            name: "Gruposn"
+                            MDBoxLayout:
+                                id: varias_widget
+                                
+                                MDSwiper:
+                                    id: ImagenAnimals
+                                    spacing:2
+                                    size_hint_y: None
+                                    height: root.height - toolbar.height - dp(40)
+                                    y: root.height - self.height - toolbar.height - dp(5)
+
+                        Lista_de_animales:
+                            id: animal_add
+                            name: "lista_animal"
+
+                            MDRelativeLayout:
+                                orientation:'vertical'
+                                id: listadeanimales_1
+
+                                ScrollView:
+                                    do_scroll_y: True
+
+                                    MDList:
+                                        padding: [10,]
+                                        spacing: [10,]
+                                        id:listaanimal1 
+                                        id: gridlayo
+                                        
+                                        cols: 1 if Window.size <= (800,600) else 2
+                                        
+                            
+                               
+                        
+                            
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        Store:
+                            name: "Tienda"
+                        ScreensMenu:
+                            name: "MenuControl"
+                            id: menuControl
+                            MDScreen: 
+                                size_hint:1 , 1
+                                pos_hint: {"center_y": 0.5}
+                                md_bg_color:0, 0, 0, .001
+                                
+                                
+                                MDBoxLayout:
+                                    size_hint_y: 1
+                                    ScrollView:
+                                        size_hint_y:1
+                                        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                                        MDList:
+                                            id: mdlist
+                                            padding:dp(20)
+                                            spacing: dp(20)
+                                            md_bg_color:1,1,1,.1
+                                            cols: 1 if Window.size <= (300,300) else menuControl.comprobar()
+                                            
+                                
+                                MDIconButton:
+                                    icon: "arrow-left-drop-circle"
+                                    theme_text_color: "Custom"
+                                    text_color: 0,0,1,1
+                                    pos_hint:{"center_x":.05, "center_y":.94}
+                                    on_press: 
+                                        app.Regresaranincio("lista_animal")
+
+                        DatosItAnimal:
+                            id: informaconFinal
+                            name: "Informacon_Final"
+                            orientation:"vertical"
+                            size_hint_y: 1
+                            MDBoxLayout:
+                                orientation:"vertical"
+                                padding:dp(2)
+                                MDBoxLayout:
+                                    orientation:"vertical"
+
+                                    ScrollView:
+                                        
+                                        MDList:
+                                            md_bg_color:[83/255,105/255,119/255, .1]
+                                            
+                                            
+                                            OneLineListItem:  
+                                                size_hint_y:None
+                                                height:dp(300)
+                                                MDCard:
+                                                    size_hint_y:None
+                                                    size_hint_y: 1
+                                                    orientation:"vertical"
+                                                    pos_hint: {"center_x":.5, "center_y": .5}
+                                                    md_bg_color: [0/255,70/255,114/255, .4]
+                                                    padding: [10,0,10,0]
+                                                    on_press:app.IMGVIEWS(informaconFinal.Imagen)
+                                                    MDBoxLayout:                                                     
+                                                        size_hint_y: .2
+                                                        MDLabel:
+                                                            text: informaconFinal.Titulo
+                                                            halign: "center"
+                                                            font_style: "Subtitle1"
+                                                            bold: True
+                                                            theme_text_color: "Custom"
+                                                            text_color:(1,1,1,1)
+                                                    FitImage:
+                                                        source: informaconFinal.Imagen
+                                                        radius:[20,0,20,20]
+                                                        size_hint_y: .6
+                                                        
+                                                    MDBoxLayout:
+                                                        size_hint_y: .06
+                                                        MDLabel:
+                                                            text: informaconFinal.ItemsGrupo
+                                                            halign: "center"
+                                                            font_style: "Subtitle2"
+                                                            bold: True
+                                                            text_color: 0,0,1,1
+                                            MDList:
+                                                id: lista_menu
+                                                margin: dp(30)
+
+                                            
+                                            
+                                            
+                                
+                                            
+                            MDIconButton:
+                                icon: "arrow-left-drop-circle"
+                                theme_text_color: "Custom"
+                                size_hint:None,None
+                                height: dp(5)
+                                width: dp(5)
+                                text_color: 0,0,1,1
+                                pos_hint:{"center_x":.05, "center_y":.94}
+                                on_press: app.Regresaranincio("Lista")
+                                
+                        MDCardScreen:
+                            name: "FCurasyotros"
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                pos_hint: {'center_x':.5 , 'center_y':.5 }
+                                
+                                ScrollView:
+                                    do_scroll_y: True
+                                    
+                                    MDList: 
+                                        spacing:[30,]
+                                        padding: [20,]
+                                        id:controlID
+                                                                                
+                            MDIconButton:
+                                icon: "arrow-left-drop-circle"
+                                theme_text_color: "Custom"
+                                text_color: 0,0,1,1
+                                pos_hint:{"center_x":.05, "center_y":.94}
+                                on_release: app.Regresaranincio("InicioFinal")
+
+                            
+
+
+
+                           
+                    
+                        
+                    
+                    MDScreen:
+                        id:add
+                        size_hint: 1,.1
+                        md_bg_color: app.cls_box[0]
+                        pos_hint: {"top":1}
+                        MDIconButton:
+                            id: home
+                            icon: "home-heart"
+                            on_press: app.Regresaranincio("Home")
+                            user_font_size: sp(40)
+                            theme_text_color: "Custom"
+                            margin: dp(30)
+                            pos_hint:{"center_x":.25, "center_y":.5}
+                            text_color:1,1,1,1
+                          
+                        MDIconButton:
+                            id: store
+                            icon: "store-24-hour"
+                            on_press: app.Cambio_de_pantalla("Tienda")
+                            user_font_size: sp(40)
+                            theme_text_color: "Custom"
+                            margin: dp(30)
+                            pos_hint:{"center_x":.5, "center_y":.5}
+                            text_color:1,1,1,1
+                          
+                        
+                            
+                        
+                            
+                            
+
+                        
+                        
+                                                
+
+
+    
+        MDNavigationDrawer:
+            id:nav_drawer
+            orientation:'vertical'
+            
+            MDBoxLayout:
+                orientation:"vertical"
+           
+                size_hint: 1,.5
+                
+                MDBoxLayout:
+                    size_hint_y:.5
+                    pos_hint: {"center_x":.5,"center_y":.5}
+
+                    Image:
+                        
+                        source: './Datos/Imagenes/logo.png'
+                        
+                        pos_hint: {"center_x":.5,"center_y":.5}
+
+                MDLabel:
+                    text:app.title
+                    font_size: dp(24)
+                   
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    bold:True
+
+                MDLabel:
+                    text: "ZootApp@gmail.com"
+                    font_size: dp(15)
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            ScrollView:
+                MDList:
+                    OneLineIconListItem:
+                        text: 'Ajustes'
+                        on_press: app.ConfigApp("configuracion")
+                        IconLeftWidget:
+                            icon:"cog"
+                    OneLineIconListItem:
+                        text: 'Tienda'
+                        IconLeftWidget:
+                            icon:"store"
+                    OneLineIconListItem:
+                        text: 'Store 24 hrs'
+                        on_press: app.Cambio_de_pantalla("Tienda")
+                        IconLeftWidget:
+                            icon:"store-24-hour"
+                            on_press: app.Cambio_de_pantalla("Tienda")
+                    
+                    OneLineIconListItem:
+                        text: 'Enviar comentario'
+                        on_press: app.ConfigApp("comentarios")
+                        IconLeftWidget:
+                            icon:"comment-edit-outline"
+
+                    OneLineIconListItem:
+                        text: 'Ayuda'
+                        on_press: app.ConfigApp("ayuda")
+                        IconLeftWidget:
+                            icon:"help"
+                    OneLineIconListItem:
+                        text: 'Salir'
+                        IconLeftWidget:
+                            icon: "exit-to-app"
+       
+                
+
+<Pantallas>:
+    name: "PantallaC"
+
+#button de agregacion de grupos categoricos
+<ButtonAdd>:
+    icon: "plus-circle"
+    user_font_size: sp(30)
+    icon_color: 0,1,1,1
+    pos_hint:{"center_x":.75, "center_y":.5}
+    theme_text_color: "Custom"
+    on_press: app.Cambio_de_pantalla("Select")
+    text_color:0,1,0,1
+    
+    
+
+
+
+
+
+
+
+
+<ImagenField>:
+    id:Imagen
+    size_hint:1,1
+    md_bg_color:39/255, 39/255, 39/255, 0.8
+    orientation:"vertical"
+    
+    IconLeftWidget:
+        icon:"exit-to-app"
+        md_bg_color: 1,0,0,1
+        on_release: app.Eliminar()
+    MDCard:
+        size_hint:.5,1
+        padding:dp(10)
+    
+        orientation:"vertical"
+        md_bg_color:39/255, 39/255, 39/255, .1
+        pos_hint:{"center_x":.5, "center_y":.5}
+        AsyncImage:
+            id: Imagen
+            source:root.Img
+          
+        
+<Buscadordialogo>:
+    pos_hint: {"center_x":.5, "center_y":.5}
+    size_hint_y: None
+    height: dp(5)
+    elected_color_background: 0, 0, 1, .4
+    MDTextField:
+        id: texto
+        line_color_normal: 0, 0, 0, 0
+        fill_color_focus: 1,1,1,.0
+        active_line: False
+    MDIconButton:
+        icon: "text-search"
+        on_release: app.ItemsDatos("Informacion", texto.text, None, None, "0ad01i310") #primero debo otener los datos y luego enviarlo
+
+<Comprar_acess>:
+    id: compras_app_list
+    size_hint_x: .3
+    MDLabel:
+        halign: "center"
+        theme_text_color: "Custom"
+        size_hint_x: .3
+        halign:"right"
+        bold:True
+        text: "$1.00"
+        text_color:1,1,1,1
+    MDIconButton:
+        icon: "menu-right-outline"
+        pos_hint: {"center_x":.5, "center_y":.5}
+        theme_text_color: "Custom"
+        text_color: 1,1,1,1
+
+<Colorbox>:
+    id: scolor
+    colors: 1,1,1,1
+    size_hint:None, None
+    width: dp(20)
+    height: dp(20)
+    md_bg_color:root.colors
+  
+    radius: dp(50)
+
+
+

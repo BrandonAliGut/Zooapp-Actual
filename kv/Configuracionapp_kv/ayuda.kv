@@ -1,0 +1,22 @@
+<Pantall_DE_Ayuda>:
+    orientation:'vertical'
+    MDBoxLayout:
+        size_hint:1,.1
+        pos_hint: {"top":1}
+        MDBoxLayout:
+            pos_hint: {"center_x":.5, "center_y":.5}
+            IconLeftWidget:
+                icon:"exit-to-app" 
+                on_release: app.Regresar_a_inicio("Inicio1")
+            MDRelativeLayout:
+                pos_hint: {"center_x":.4, "center_y":.5}
+                MDBoxLayout:
+                    size_hint:None, None
+                    width: dp(100)
+                    hiegth:dp(20)
+                    pos_hint: {"center_x":.47, "center_y":.4}
+                    MDLabel:
+                        text: "Ayuda"
+    MDBoxLayout:
+        size_hint:1,.9
+      

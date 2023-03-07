@@ -1,0 +1,47 @@
+<Store>:
+    name: "Tienda"
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+    orientation:'vertical'
+    MDBoxLayout:
+        size_hint:1,1
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        ScrollView:
+            do_scroll_y: True
+            bar_width:"5dp"
+            MDGridLayout:
+                id: store_pos
+                cols: 1
+                adaptive_height: True
+                
+
+                
+            
+
+<Home_Store>:
+    id: Home_s
+    size_hint_y: None
+    orientation:'vertical'
+    spacing:dp(30)
+    adaptive_height: True
+    
+    MDRelativeLayout:
+        id: cajaHomeS
+        size_hint_y: None
+        height: dp(350)
+        md_bg_color:app.cls_box[0]
+        radius: [0,0,10,10]
+        FitImage:
+            source: "./Datos/Imagenes/Logo.png"
+        MDIconButton:
+            icon: "close-circle"
+            pos_hint: {'right':1 , 'top': 1}
+            on_release: app.root_properti()
+    
+
+
+            
+    
+
+
+
+

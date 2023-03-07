@@ -1,0 +1,87 @@
+
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import colors kivymd.color_definitions.colors
+
+#:import effect kivy.uix.effectwidget.EffectWidget
+#:import HorizontalBlurEffect kivy.uix.effectwidget.HorizontalBlurEffect
+#:import VerticalBlurEffect kivy.uix.effectwidget.VerticalBlurEffect
+<Grupos>:
+    orientation:"horizontal"
+    pos_hint:  {"center_x":.5, 'center_y': .5}
+    
+    
+    
+                        
+<Lista>:
+    
+    pos_hint: {'center_x':1, 'center_y':.5}
+    size_hint: 1,.9
+    orientation: 'horizontal'
+    radius: [30,]
+    MDCard:
+        theme_text_color: "Custom"
+        
+        size_hint_x: None
+        width: dp(300)
+        text_color:1,0,0,1
+        md_bg_color: 0,0,0,.0
+        divider_color: 0,0,0,.0
+        on_press: 
+            app.ItemsDatos("ListEspecie", root.properti)
+        IconLeftWidget:
+            icon: "lock-alert"
+            theme_text_color: "Custom"
+            icon_color:1,0,0,1
+        MDLabel:
+            id: text_id
+            theme_text_color:"Custom"
+            text_color: 132/255, 20/255, 0, 0.924
+            bold: True
+            opacity: 0.8
+            text: root.encavesado
+            size: self.texture_size
+        
+    
+         
+
+<ListaZ@MDBoxLayout>:
+    MDBoxLayout:
+        pos_hint: {'center_x':1, 'center_y':.5}
+        md_bg_color: app.theme_cls.bg_darkest
+        size_hint: 1,.9
+        size_hint_max_x: dp(400)
+        orientation: 'vertical'
+        radius: [30,]
+        MDBoxLayout:
+            size_hint: 1, .2
+            MDLabel:
+                halign: 'center'
+                text: root.encavesado
+                height: dp(1)
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.opposite_bg_dark
+                font_style: 'H6' if Window.size >= (350,300) else 'Subtitle1'
+        MDCard:
+            size_hint: 1, 1
+            radius: [30,]
+            on_release: 
+                app.ItemsDatos("ListEspecie", root.properti)
+            FitImage:
+                source:root.direccionImagen
+
+        MDBoxLayout:
+            pos_hint: {'center_x':.5, 'center_y':.1}
+            size_hint:1, None
+            md_bg_color: app.theme_cls.bg_darkest
+            height: dp(50)
+            radius: [0,0,30,30]
+            
+            orientation: 'horizontal'
+            MDLabel: 
+                text:"informacion"
+                halign: 'center'
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.opposite_bg_dark
+            #MDLabel:
+                #text: "hola"
+                #halign: 'center'

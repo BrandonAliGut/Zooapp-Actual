@@ -1,0 +1,195 @@
+#:import Window kivy.core.window.Window
+
+<Home>:
+    name:"Properpantalla"
+    MDBoxLayout:
+        orientation:'vertical'
+        name: "Gruposn"
+        
+        MDRelativeLayout:
+            id: rel_layout
+            size_hint_y: None
+            height: dp(130)
+            padding:20
+            spacing:dp(40)
+            
+            MDGridLayout:
+                cols:1
+                spacing:30
+                row: 2
+                MDRelativeLayout:
+                    pos_hint: {'center_x': 0.5,'top': .8}
+                    orientation:"horizontal"
+                    spacing:10
+                    MDIconButton:
+                        icon: "menu"
+                        pos_hint: {'right': 0.1,'top': .8}
+                        on_release: 
+                            app.click_sound()
+                            root.menuConfigCard()
+                    MDBoxLayout:
+                        pos_hint: {'right': 0.9,'top': .8}
+                        spacing: dp(20)
+                        
+                        MDLabel:
+                            halign:"right"
+                            text: "AppZoot"
+                            theme_text_color:"Custom"
+                            text_color: 0,0,1,1
+                            bold:True
+                            font_size:dp(26)
+                        FitImage:
+                            radius: [50,]
+                            size_hint:None,None
+                            width: dp(60)
+                           
+                            height: dp(60)
+                            pos_hint:{"center_x":.5}
+                            source: 'source/Imagenes/logo.png'
+                            
+                ScrollView:
+                    do_scroll_y: True
+                   
+                    
+                    bar_width:12
+                    MDBoxLayout:
+                        adaptive_heigth: True
+                        orientation:'vertical'
+                        
+                        MDBoxLayout:
+                            id: varias_widget
+                            height:60
+                            size_hint_y: None
+                            
+                            ScrollView:
+                                do_scroll_y: False
+                                
+                                MDBoxLayout:
+                                    orientation:'horizontal'
+                                    size_hint_y: None
+                                    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                                    size_hint_x:1
+                                    spacing:dp(200)
+                                    id: ImagenAnimals
+                                   
+                                    adaptive_width: True
+        ScreenManager:
+            id: screen_manager
+            
+            Lista_de_animales:
+                id: animal_add
+                name: "lista_animal"
+                MDBoxLayout:
+                    id: varias_widget
+                    
+                    
+                    MDScrollView:
+                        do_scroll_y: False
+                        bar_width: dp(0)
+                        
+                        scroll_distance: 20
+                        
+                        radius:dp(20)
+                        bar_pos_x:"top"
+                        
+                        MDGridLayout:
+                            rows: 1
+                            padding: dp(20)
+                            spacing:dp(10)
+                            size_hint_y: None
+                            height: root.height -  rel_layout.height - dp(10)
+                            id:listaanimal1 
+                            id: gridlayo
+                            adaptive_width: True
+
+                                
+
+                    
+                            
+                        
+                 
+            ScreensMenu:
+                name: "MenuControl"
+                id: menuControl
+                MDScreen: 
+                    size_hint:1 , 1
+                    pos_hint: {"center_y": 0.5}
+                    md_bg_color:0, 0, 0, .001
+                    MDBoxLayout:
+                        size_hint_y: 1
+                        ScrollView:
+                            size_hint_y:1
+                            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                            MDList:
+                                id: mdlist
+                                padding:dp(20)
+                                spacing: dp(20)
+                                md_bg_color:1,1,1,.1
+                                cols: 1 if Window.size <= (300,300) else menuControl.comprobar()
+                                
+                    
+                    
+                            
+                            
+
+   
+                
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    
+        
+    MDBoxLayout:
+        orientation:'vertical'
+        pos_hint: {'center_x': 0.5,'center_y': .5}
+        padding: ('20dp', '4dp', '10dp', '4dp')
+        
+        MDCard:
+            id: mdMenuadd
+            pos_hint: {'center_x': .0,'center_y': .5}
+            
+            size_hint: None,None
+            
+            radius:Window.height / 40
+            height: Window.height / 3 if Window.height / 3 >= 340.00 else dp(300)
+            width: dp(60) 
+            md_bg_color: [179/255, 179/255, 179/255, 0.986] 
+            elevation: 4
+            MDGridLayout:
+                cols:1
+                padding: [5]
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                MDBoxLayout:
+                    size_hint_y: 1
+                    MDIconButton:
+                        haling:"center"
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+                        icon: 'home-circle-outline'
+                        on_release: 
+                            app.click_sound()
+                MDBoxLayout:
+                    size_hint_y: 1
+                    MDIconButton:
+                        haling:"center"
+                        icon: 'store-outline'
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+                        on_release: 
+                            app.click_sound()
+                MDBoxLayout:
+                    size_hint_y: 1
+                    id:account_buton
+                    MDIconButton:
+                        
+                        haling:"center"
+                        icon: 'account-circle-outline'
+                        on_press: root.menu_drop()
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+                        on_release: 
+                            app.click_sound()

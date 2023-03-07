@@ -1,0 +1,77 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import colors kivymd.color_definitions.colors
+
+#:import effect kivy.uix.effectwidget.EffectWidget
+#:import HorizontalBlurEffect kivy.uix.effectwidget.HorizontalBlurEffect
+#:import VerticalBlurEffect kivy.uix.effectwidget.VerticalBlurEffect
+<DatosItAnimal>:
+    EffectWidget:
+        effects:
+            # blur_value   .
+            (\
+            HorizontalBlurEffect(size=app.blur_value), \
+            VerticalBlurEffect(size=app.blur_value), \
+            )
+        FitImage: 
+            id: title_image
+            size_hint_y: 1
+            y: root.height -self.height
+            source: ""
+<Listas>:
+    focus_color: 0,23/255, 157/255,.2
+    unfocus_color: 0,0,0,.2
+    height:dp(40)
+    elevation: 10
+    orientation: 'vertical'
+    MDBoxLayout:
+        
+        MDFlatButton:
+            size_hint_x: .7
+            text: root.n_campo
+            theme_text_color: "Custom"
+            text_color: 1,1,1,
+            bold:True
+            on_release: app.ItemsDatos("Informacion",root.n_campo, root.idList, root.ids_CompraCateg)
+            #app.ItemsDatos(root.opcion,root.nombre, root.imagen,root.Imgdefaul,root.Id_select)
+        MDBoxLayout:
+            id: franja_precio
+            size_hint: None,None
+            height: dp(0) 
+            width: dp(0)
+            orientation:"horizontal"
+            padding:[1,]
+            spacing: dp(2)
+            Colorbox:
+                id: colorbox
+                colors_id: 1,1,1,0
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                colors: self.colors_id
+            MDLabel:
+                id: preciobox
+                halign:"center"
+                text: "free" 
+                theme_text_color: "Custom"
+                text_color: 1,1,1,0
+        
+    
+    MDBoxLayout:
+        size_hint:1,None
+        height: dp(1)
+        line_color: 1,1,1,.6
+
+<DatosGenerales>:
+    
+    size_hint_y: None
+    height: dp(40)
+    md_bg_color:131/250, 161/250, 149/250, 0.712
+    pos_hint: {"center_x":.5, "center_y":.5}
+    on_press: app.ItemsDatos('Enfermdades',root.selecesEnfermedad )
+    ripple_behavior: True
+    radius: [10,0,0,10]
+    MDLabel:
+        halign: "center"
+        text:root.Enfermedad
+        theme_text_color: "Custom"
+        bold:True
+    
+        

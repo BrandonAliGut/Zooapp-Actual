@@ -1,0 +1,62 @@
+<Bienvenida>:
+    name: 'bienvenida'
+   
+    md_bg_color: app.theme_cls.bg_normal
+    pos_hint:{"center_x":.5, "center_y":.9}
+
+    MDBoxLayout:
+        id:Cuadro_1
+        size_hint: 1, 1
+        pos_hint:{"center_x":.5, "center_y":.2}
+        orientation: 'vertical'
+        MDRelativeLayout:
+            id: lbl_1
+            size_hint: 1,None
+            height: dp(250)
+            
+            pos_hint:{"center_x":.5, "center_y":.5}
+            FitImage:
+                size_hint:None,None
+                width: dp(200)
+                height: dp(200)
+                pos_hint:{"center_x":.5}
+                source: './Datos/Imagenes/logo.png'
+                
+            
+        MDBoxLayout:
+            
+            size_hint: 1, None
+            pos_hint:{"center_x":.5, "center_y":.1}
+            orientation: 'vertical'
+
+            CommonLabel:
+                id: lbl_2
+                opacity: 0
+                adaptive_height: True
+                halign: "center"
+                y: -self.height
+                pos_hint_x: .3
+                text: "ZooApp"
+                font_size: sp(50)
+                bold: True
+                theme_text_color: "Secondary"
+                text_color: 0,0,1,1
+
+
+               
+
+ 
+<CommonLabel@MDLabel>
+    angle: 180  #  
+    opacity: 0
+    adaptive_height: True
+    halign: "center"
+    y: -self.height
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle: self.angle
+            origin: self.center
+    canvas.after:
+        PopMatrix
+

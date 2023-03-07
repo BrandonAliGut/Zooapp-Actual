@@ -1,0 +1,14 @@
+[
+    {
+        "idGrup": 1,
+        "grupo": "Ganado menor",
+        "foto": "/Grupo/b9344d6dc8dc1d9daf348f94a6242df4.jpg",
+        "activo": true
+    },
+    {
+        "idGrup": 2,
+        "grupo": "Ganado Ganado mayor",
+        "foto": "/Grupo/b9344d6dc8dc1d9daf348f94a6242df4.jpg",
+        "activo": true
+    }
+]

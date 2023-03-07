@@ -1,0 +1,142 @@
+
+<Config_menu>
+    id: box_principal_start
+    size_hint: .8,.8
+    radius: [20,0,0,20]
+    line_color: app.theme_cls.opposite_bg_dark
+    
+    ScreenManager:
+        Screen:
+            MDGridLayout:
+                id: screenconfigmenu
+                cols:1
+                radius: root.radius
+                md_bg_color:[213/255, 213/255, 218/255, 0.904] #[103/255, 103/255, 104/255, 0.699]
+                MDBoxLayout:
+                    size_hint_y:None
+                    size_hint_x: 1
+                    height: dp(40)
+                    
+                    radius: root.radius
+                    md_bg_color: [213/255, 213/255, 218/255, 0.304]
+                    MDIconButton:
+                        icon: 'circle-expand'
+                        pos_hint: {'right': 0.0,'top': 1.0}
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+                        on_release: root.call_expand()
+                ScreenManager:
+                    id: manager_screen_config
+                    GridOpcMenu:
+                        name:"GridOpc"
+                    Configuracion:
+                        name:"configuracion"
+                    StoreTemas:
+                        name:"Store_app"
+                        
+
+<GridOpcMenu>:
+    MDGridLayout:
+        cols:1
+        radius: root.radius
+        ScrollView:
+            MDList:
+                MDGridLayout:
+                    cols: 1
+                    size_hint_y:None
+                    size_hint_x: 1
+                    height: dp(300)
+                    pos_hint: {"center_x":.5,"center_y":.5}
+                    padding:dp(5)
+                    Image:
+                        
+                        source: './source/Imagenes/logo.png'
+                        
+                        pos_hint: {"center_x":.5,"center_y":.5}
+
+                    MDLabel:
+                       
+                        text:app.title
+                        font_size: dp(24)
+                        size_hint_y: None
+                        theme_text_color: "Custom"
+                        text_color:app.theme_cls.opposite_bg_dark
+                        height: self.texture_size[1]
+                        bold:True
+
+                    MDLabel:
+                        
+                        text: "ZootApp@gmail.com"
+                        font_size: dp(15)
+                        size_hint_y: None
+                        theme_text_color: "Custom"
+                        text_color:app.theme_cls.opposite_bg_dark
+                        height: self.texture_size[1]
+                OneLineIconListItem:
+                    text: 'Ajustes'
+                    theme_text_color: "Custom"
+                    text_color:app.theme_cls.opposite_bg_dark
+                    on_release: 
+                        app.Config_view_class('configuracion')
+                        root.manager.transition.direction = "up" #['left', 'right', 'up', 'down']
+                    IconLeftWidget:
+                        icon:"cog"
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+                OneLineIconListItem:
+                    text: 'Tienda'
+                    theme_text_color: "Custom"
+                    text_color:app.theme_cls.opposite_bg_dark
+                    on_release:
+                        root.manager.transition.direction = "up" #['left', 'right', 'up', 'down']
+                    IconLeftWidget:
+                        icon:"store"
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+                OneLineIconListItem:
+                    text: 'Store 24 hrs'
+                    theme_text_color: "Custom"
+                    text_color:app.theme_cls.opposite_bg_dark
+                    on_release: 
+                        app.Cambio_de_pantalla("Tienda")
+                        root.manager.transition.direction = "up" #['left', 'right', 'up', 'down']
+                    IconLeftWidget:
+                        icon:"store-24-hour"
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+                        on_press: app.Cambio_de_pantalla("Tienda")
+                
+                OneLineIconListItem:
+                    text: 'Enviar comentario'
+                    theme_text_color: "Custom"
+                    text_color:app.theme_cls.opposite_bg_dark
+                    on_release: 
+                        app.ConfigApp("comentarios")
+                        root.manager.transition.direction = "up" #['left', 'right', 'up', 'down']
+                    IconLeftWidget:
+                        icon:"comment-edit-outline"
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+
+                OneLineIconListItem:
+                    text: 'Ayuda'
+                    theme_text_color: "Custom"
+                    text_color:app.theme_cls.opposite_bg_dark
+                    on_release: 
+                        app.ConfigApp("ayuda")
+                        root.manager.transition.direction = "up" #['left', 'right', 'up', 'down']
+                    IconLeftWidget:
+                        icon:"help"
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+                OneLineIconListItem:
+                    text: 'Salir'
+                    theme_text_color: "Custom"
+                    text_color:app.theme_cls.opposite_bg_dark
+                    on_release: 
+                        root.manager.transition.direction = "up" #['left', 'right', 'up', 'down']
+                    IconLeftWidget:
+                        icon: "exit-to-app"
+                        theme_text_color: "Custom"
+                        icon_color:app.theme_cls.opposite_bg_dark
+

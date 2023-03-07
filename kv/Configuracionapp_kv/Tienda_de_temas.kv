@@ -1,0 +1,97 @@
+<StoreTemas>:
+    
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    MDBoxLayout:
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        orientation:"vertical"
+        MDBoxLayout:
+            size_hint:1,.1
+            pos_hint: {"top":1}
+            MDBoxLayout:
+                pos_hint: {"center_x":.5, "center_y":.5}
+                IconLeftWidget:
+                    icon:"chevron-down-circle-outline" 
+                    on_release: 
+                        app.Config_view_class("configuracion")
+                        root.manager.transition.direction = "down" #['left', 'right', 'up', 'down']
+                MDRelativeLayout:
+                    pos_hint: {"center_x":.4, "center_y":.5}
+                    MDBoxLayout:
+                        size_hint:None, None
+                        width: dp(200)
+                        hiegth:dp(20)
+                        pos_hint: {"center_x":.47, "center_y":.4}
+                        MDLabel:
+                            
+                            text: "Tienda De Temas"
+        MDBoxLayout:
+     
+            size_hint_x:1 if Window.size <= (850,600) else .8
+            size_hint_y:.9 
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            ScrollView:
+                do_scroll_y: True
+                bar_width: 1
+                MDList:
+                    spacing: dp(30)
+                    padding:[20,0,20,20]
+                    BarraMovil:
+                        tema: "Naturaleza"
+                    BarraMovil:
+                        tema: "Vida salvaje"
+                    
+
+                    MDBoxLayout:
+                        size_hint_y: None
+                        height: dp(60)
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        orientation:"vertical"
+                        padding: [30,]
+                        
+                        MDRectangleFlatIconButton:
+                            pos_hint: {'center_x': .5, 'center_y': .5}
+                            text: "Tema Personalizado"
+                            on_release: app.Cambio_de_pantalla("Config_color_screen")
+                            icon:"border-color"
+                            line_color: 0, 0, 1, 1
+                            
+                            
+                
+<BarraMovil>:
+    height: dp(340)
+    size_hint_y: None
+    orientation: 'vertical'
+    tema: ""
+    MDBoxLayout:
+        height:dp(30)
+        size_hint_y: None
+        MDLabel:
+            text: root.tema
+    ScrollView:
+        do_scroll_y: False
+        bar_width: 1
+        MDBoxLayout:
+            adaptive_width: True
+            spacing: dp(10)
+            padding:[10,]
+            Card:
+                sources: "./source/pantalla/Aveja.PNG"
+            Card:
+                sources: "./source/pantalla/avejas2.PNG"
+            Card:
+                sources: "./source/pantalla/aguas.PNG"
+            Card:
+                sources: "./source/pantalla/Captura4.PNG"
+
+    
+
+
+
+<Card>:
+    size_hint: None,None
+    height: "300dp"
+    sources: ""
+    width: dp(180)
+    FitImage:
+        size: root.size[0] -dp(6), root.size[1] -dp(6)
+        source: root.sources

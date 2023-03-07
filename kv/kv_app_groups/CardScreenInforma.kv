@@ -1,0 +1,84 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import colors kivymd.color_definitions.colors
+
+#:import effect kivy.uix.effectwidget.EffectWidget
+#:import HorizontalBlurEffect kivy.uix.effectwidget.HorizontalBlurEffect
+#:import VerticalBlurEffect kivy.uix.effectwidget.VerticalBlurEffect
+
+        
+#---------------------------------------------}}}
+<MDCardScreen>:
+    pos_hint: {'center_x':.5 , 'center_y':.5 }
+    
+
+                
+
+
+<PaginaCard>:
+    line_color: 1,1,.4,.2
+    pos_hint: {'center_x':.5 , 'center_y':1 }
+    pos_hint_y: None
+    size_hint: (.9,None )
+    md_bg_color: app.theme_cls.bg_normal
+    height: InformacionBoxla.height + dp(10)
+    radius: [0,0,0,0]
+    spacing: dp(50)
+    orientation:'vertical'
+    elevation: dp(10)
+    padding: [0,]
+    source: root.source
+    MDBoxLayout:
+        id: InformacionBoxla
+        orientation:'vertical'
+        size_hint_y: None
+        height: temaAnimal.height+textInforacion.height+imagen1.height
+        
+        MDBoxLayout:
+            id: temaAnimal
+            pos_hint: {"center_y":.1, 'center_x':.5}
+            size_hint: 1,None
+            line_color: 1,0,0,1
+            radius: [0,0,0,0]
+            height: texto.height
+            padding: [30,0,0,0]
+
+            MDLabel:
+                id: texto
+                height: dp(40)
+                text: root.envesado
+                bold: True
+                
+        
+
+        MDBoxLayout:
+            id: textInforacion
+            pos_hint:{"center_x":.5, "center_y":.5}
+            size_hint: 1, None
+
+            orientation:'vertical'
+            radius: [20,0,10,0]
+            padding: [10,]
+            spacing:dp(30)
+            height: textoMD.height + 20
+            MDLabel:
+                id: textoMD
+                text: root.informacion 
+                size: self.texture_size
+                halign: "justify"
+                size_hint_y: None
+        MDIMACAR:
+            id: imagen1
+            size_hint_y: None if root.source =="" else 1
+            on_press:app.IMGVIEWS(root.source) 
+            FitImage:
+                id: Imagentotal
+                size_hint_y: None if root.source =="" else 1
+                height: 1 if root.source =="" else 300
+                source: root.source
+                
+<MDIMACAR>:
+    id: imagen1
+    size_hint: 1,1
+    orientation:'vertical'
+    
+

@@ -1,0 +1,88 @@
+# ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Subtitle1', 'Subtitle2', 'Body1', 'Body2', 'Button', 'Caption', 'Overline', 'Icon']
+<Informacion>:
+    id:Informacion
+    orientation: 'vertical'
+    md_bg_color: [0,0,0,.02]
+    size_hint_y: None
+    height: gridOneinfor.height + dp(100)
+    line_color: 1,1,1,.9
+    size_hint_x:.9
+    pos_hint: {'center_x': .5 }
+    margin: dp(5)
+    focus_behavior: True
+    ripple_behavior: True
+    elevation: 25
+    MDLabel:
+        text: "Desbloquear"
+        bold: True
+        halign: "center"
+        font_style:"H1"
+        font_size: dp(18)
+        bold: True
+    FitImage:
+        source: "./././Datos/Imagenes/39dce492be000346095393ad1def1782.jpg"
+        size_hint_y:.5
+    MDGridLayout:
+        id: gridOneinfor
+        cols: 1
+        padding: dp(10)
+
+        size_hint_y: None
+        height: boxone.height + boxtwo.height + dp(20)
+        MDBoxLayout:
+            id: boxone
+            orientation: 'vertical'
+            size_hint_y: None
+            height: title_infor.height + informacion.height + dp(10)
+            MDLabel:
+                id:title_infor
+                text: "Informacion"
+                size_hint_y: None
+                size: self.texture_size
+                bold: True
+                font_style:"H5"
+                font_size: dp(14)
+            MDLabel:
+                id: informacion
+                halign: "justify"
+                size: self.texture_size
+                size_hint_y: None
+                font_style:"Caption"
+                font_size: dp(15)
+                text: "este categoria desblockea unicamente la categoria 'blue',lo cual ofrese la disposiscion de distitos item de informacion que le permitara un aprendizaje mas fornido de las distintas especie exspuestas "
+        MDBoxLayout:
+            id: boxtwo
+            line_color: 0,0,0,.5
+            line_width: dp(1)
+            size_hint_y: None
+            height: grid_infor.height+ dp(10)
+            radius:[10,]
+            padding: dp(10)
+            ScrollView:
+                do_scroll_y: True
+                MDGridLayout:
+                    id: grid_infor
+                    cols: 1
+                    size_hint_y: None
+                    height:dp(200)
+                    MDBoxLayout:
+                        id: box1
+                        size_hint_y: None
+                        height: dp(40)
+                        IconLeftWidget:
+                            icon:"check-circle"
+                        MDLabel:
+                            text: "acceso a los item blue"
+                    MDBoxLayout:
+                        id: box1
+                        size_hint_y: None
+                        height: dp(40)
+                        IconLeftWidget:
+                            icon:"close-circle"
+                        MDLabel:
+                            text: "acceso a los item red"
+                            
+                
+
+
+

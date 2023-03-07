@@ -1,0 +1,101 @@
+
+
+#:import effect kivy.uix.effectwidget.EffectWidget
+#:import HorizontalBlurEffect kivy.uix.effectwidget.HorizontalBlurEffect
+#:import VerticalBlurEffect kivy.uix.effectwidget.VerticalBlurEffect
+<Lista_de_animales>:
+    
+
+        
+
+        
+                    
+<Animal_Add>:
+    
+    size_hint_x: None
+    width: boxSWipe.height / 2
+    MDBoxLayout:
+        id: boxSWipe
+        pos_hint: {'center_x':1, 'center_y':.5}
+        
+        size_hint_x:None
+        width: root.height /2
+        size_hint_max_x: dp(200)
+        orientation: 'vertical'
+        radius: [30,]
+        MDCard:
+            size_hint: 1, 1
+            radius: [30,]
+            id: elima
+            on_press:
+                app.ItemsDatos("MenuIntems",root.selecespecie,root.imagenSor, root.imagenSor, root.ids_CompraCateg)#opc de enfermedades
+                
+            MDRelativeLayout:
+                radius: [30,]
+                FitImage:
+                    source:root.imagenSor 
+                    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                    radius: [30,]
+                MDBoxLayout:
+                    size_hint: 1, .2
+                    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                    md_bg_color: app.theme_cls.bg_darkest
+                    opacity: 0.8
+                    orientation:'vertical'
+                    MDLabel:
+                        halign: 'center'
+                        text: root.especie
+                        height: dp(1)
+                        bold: True
+                        theme_text_color: "Custom"
+                        text_color: app.theme_cls.opposite_bg_dark
+                        font_style: 'H5' if Window.size >= (350,300) else 'Subtitle1'
+                    MDBoxLayout:
+                        id: franja_precio
+                        size_hint: None,None
+                        height: dp(0) 
+                        width: dp(0)
+                        orientation:"horizontal"
+                        padding:[1,]
+                        spacing: dp(2)
+                        Colorbox:
+                            id: colorbox
+                            colors_id: 1,1,1,0
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                            colors: self.colors_id
+                        MDLabel:
+                            id: preciobox
+                            halign:"center"
+                            text: "free" 
+                            theme_text_color: "Custom"
+                            text_color: 1,1,1,0
+            
+<Franja@MDCard>:
+    size_hint: .2,.8
+    md_bg_color:app.theme_cls.primary_color
+    
+<AddButtonAnimal>:
+    pos_hint:{"center_x":.5, "center_y":.039}
+    size_hint: 1, None
+    height: dp(65)
+    halign: "center"
+    md_bg_color:app.theme_cls.primary_color
+    
+    MDIconButton:
+        pos_hint: {"center_x":.5,"center_y":.56}
+        icon:"plus-circle"
+        user_font_size: sp(40)
+        theme_text_color:"Custom"
+        text_color: 0,1,0,1
+        on_release: 
+            app.Regresaranincio("Lista")
+            root.manager.transition.direction = "left"
+<Colorbox>:
+    id: scolor
+    colors: 1,1,1,1
+    size_hint:None, None
+    width: dp(20)
+    height: dp(20)
+    md_bg_color:root.colors
+  
+    radius: dp(50)
