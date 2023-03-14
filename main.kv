@@ -6,36 +6,38 @@
         orientation:'vertical'
         name: "Gruposn"
         
-        MDRelativeLayout:
+        MDBoxLayout:
             id: rel_layout
+            orientation: 'vertical'
             size_hint_y: None
             height: dp(130)
-            padding:20
-            spacing:dp(40)
-            
             MDGridLayout:
                 cols:1
                 spacing:30
+              
                 row: 2
                 MDRelativeLayout:
                     pos_hint: {'center_x': 0.5,'top': .8}
                     orientation:"horizontal"
-                    spacing:10
                     MDIconButton:
                         icon: "menu"
                         pos_hint: {'right': 0.1,'top': .8}
+                        theme_text_color:"Custom"
+                        text_color: app.theme_cls.opposite_bg_light
+                        
                         on_release: 
                             app.click_sound()
                             root.menuConfigCard()
                     MDBoxLayout:
                         pos_hint: {'right': 0.9,'top': .8}
-                        spacing: dp(20)
+                        spacing:dp(12)
                         
                         MDLabel:
                             halign:"right"
                             text: "AppZoot"
                             theme_text_color:"Custom"
                             text_color: 0,0,1,1
+                            
                             bold:True
                             font_size:dp(26)
                         FitImage:
@@ -47,32 +49,22 @@
                             pos_hint:{"center_x":.5}
                             source: 'source/Imagenes/logo.png'
                             
-                ScrollView:
-                    do_scroll_y: True
-                   
-                    
-                    bar_width:12
-                    MDBoxLayout:
-                        adaptive_heigth: True
-                        orientation:'vertical'
-                        
-                        MDBoxLayout:
-                            id: varias_widget
-                            height:60
-                            size_hint_y: None
-                            
-                            ScrollView:
-                                do_scroll_y: False
-                                
-                                MDBoxLayout:
-                                    orientation:'horizontal'
-                                    size_hint_y: None
-                                    pos_hint: {'center_x': 0.5,'center_y': 0.5}
-                                    size_hint_x:1
-                                    spacing:dp(200)
-                                    id: ImagenAnimals
-                                   
-                                    adaptive_width: True
+                
+                
+            ScrollView:
+                do_scroll_y: False
+                bar_width: dp(12)
+                bar_color: 1,0,0,1
+                bar_inactive_color: 1,0,0,1
+                
+                MDBoxLayout:
+                    orientation:'horizontal'
+                    size_hint_y: None
+                    pos_hint: {'center_x': 0.5,'top': 0.9}
+                    size_hint_x:1
+                    spacing:dp(200)
+                    id: ImagenAnimals
+                    adaptive_width: True
         ScreenManager:
             id: screen_manager
             

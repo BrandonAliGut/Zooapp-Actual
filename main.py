@@ -25,7 +25,7 @@ Builder.load_file("./kv/kv_app_groups/Submenuapp.kv")
 
 from kivymd.uix.scrollview import MDScrollView
 from kivymd.uix.boxlayout import MDBoxLayout
-Window.size = (400, 800)
+
 
 class WindowManager(ScreenManager):
     pass
@@ -54,8 +54,7 @@ class ScreensMenu(Screen):
         return numero
     def TextoInformacion(self):
         return 0
-from functools import partial
-from kivymd.theming import ThemeManager
+
 class add_callbacks:
     wm = ObjectProperty()
     def __init__(self,**kv):
